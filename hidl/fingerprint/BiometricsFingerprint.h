@@ -115,7 +115,11 @@ class BiometricsFingerprint : public IBiometricsFingerprint,
     }
 
     bool setDimlayerHbm(unsigned int value) {
+#ifdef USE_DIMLAYER_BL_EN
+        return isUdfps() && ioctl(mOplusDisplayFd, PANEL_IOCTL_SET_DIMLAYER_BL_EN, &value);
+#else
         return isUdfps() && ioctl(mOplusDisplayFd, PANEL_IOCTL_SET_DIMLAYER_HBM, &value);
+#endif
     }
 
     bool setFpPress(unsigned int value) {
