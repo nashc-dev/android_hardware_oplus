@@ -26,6 +26,7 @@ public interface IOplusNecManager extends IOplusCommonFeature {
     default void broadcastNecEvent(int slotId, int eventId, Bundle data) {}
     default void broadcastServiceStateChanged(boolean oos, int slotId) {}
     default void broadcastDataConnect(int slotId, String type) {}
+    default void broadcastOlkKeylog(int slotId, Bundle data) {}
     default void broadcastDataConnectResult(int slotId, String type, boolean success) {}
     default void broadcastVolteVopsOrSettingChanged(int slotId, int event, boolean isVolteEnabled) {}
     default void broadcastDataDisconnect(int slotId, String type) {}
@@ -34,13 +35,16 @@ public interface IOplusNecManager extends IOplusCommonFeature {
     default void broadcastNoDataIconError(int slotId, int errorcode, int protocol, String cause) {}
     default void broadcastNoDataFlowError(int slotId, int errorcode, String mNoDataFlowReason) {}
     default void broadcastNoDataFlowRecoveryError(int slotId, int errorcode, String recovery) {}
+    default void broadcastFastRecoveryEvent(int slotId, int errorcode, String event) {}
     default void broadcastSlowDataFlowError(int slotId, int errorcode, String score) {}
     default void broadcastSlowDataFlowRecovery(int slotId, int errorcode, String score) {}
     default void broadcastGameLargeDelayError(int slotId, int errorcode, String gameError) {}
     default void broadcastLimitState(int slotId, boolean limitState) {}
+    default void broadcastScanQrCodeStats(int slotId, int errorcode, String QrSuccess) {}
     default void broadcastPreferredNetworkMode(int slotId, int preferredMode) {}
     default void broadcastDataEnabledChanged(int slotId, boolean enabled) {}
     default void broadcastLostConnectionReason(int slotId, int errorcode, int lostReason) {}
+    default void broadcastAnrEventStat(int slotId, int errorcode, String anrEventStat) {}
     default void broadcastHangUpDelayTimer(int slotId, long millis, int csOrIms) {}
     default void broadcastCdmaResetActiveTimer(int slotId, int networkType) {}
     default void broadcastPreciseCallStateChanged(int slotId, int ring, int foreground, int background, int cause, int preciseCause, int disconnectState) {}
@@ -50,7 +54,10 @@ public interface IOplusNecManager extends IOplusCommonFeature {
     default void broadcastImsRegisterState(int slotId, boolean imsRegisterState) {}
     default void broadcastRegInfoChanged(int voiceRegState, int voiceNetworkType, int dataRegState, int dataNetworkType, int slotId) {}
     default void broadcastImsNetworkStateChanged(int phoneId, int errorCode, String errorMessage, int regState, int imsRat) {}
+    default void broadcastScreenShare(int phoneId) {}
+    default void broadcastScreenTouch(int phoneId, int screenTouchCount, int screenTouchSuccCount) {}
     default void broadcastOnlineMeeting(int slotId, int errorcode, String record) {}
+    default void broadcastNetworkDiagnosis(int slotId, Bundle data) {}
     default void broadcastDispatchedSmsId(int slotId, int errorCode, long messageId, boolean isWapPush, boolean isClass0, String mPackageName) {}
     default void broadcastDispatchedMoSmsId(int slotId, int eventId, String networkType, int rat, int errorType, int errorCode, String success) {}
 }
